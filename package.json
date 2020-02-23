@@ -3,7 +3,7 @@
   "description": "Collection of movies and TV series.",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http:/gafortuno.github.io/netchill",
+  "homepage": "http:/gafortuno.github.io/net-chill/",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",

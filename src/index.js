@@ -51,7 +51,7 @@ class App extends React.Component {
             <Route exact path="/">
               <AppShowList shows={this.state.shows}
                 loading={this.state.showsRequestLoading}
-                onFetchShowDetails={() => this.fetchShowDetails('1')} />
+                onFetchShowDetails={this.fetchShowDetails} />
             </Route>
 
             <Route path='/details/:id'>

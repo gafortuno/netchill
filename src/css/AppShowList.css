@@ -16,7 +16,7 @@
   color: #556B79;
 }
 
-.rating {
+.list-wrapper .rating {
   position: absolute;
   top: -8px;
   left: 50%;

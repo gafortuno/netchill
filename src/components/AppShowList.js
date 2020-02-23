@@ -12,27 +12,29 @@ function AppShowList(props) {
   return (
     <div className="list-wrapper">
       {loading ? <LoadingEllipsis /> :
-        shows.map((show) =>
-          <Link to={`/details/${show.id}`}
-            onClick={() => onFetchShowDetails(show.id)}
-            key={show.id}>
-            <div className="show" key={show.id}>
-              <span className="rating">
-                {displayRating(show.rating.average || 0)}
-              </span>
-              <img src={show.image ? show.image.medium || '' : ''}
-                alt={show.name} className="thumbnail" />
-              <div className="details">
-                <div className="title">
-                  {show.name}
+        !shows.length ?
+          <div class="no-data-available">No data available.</div>
+          : shows.map((show) =>
+              <Link to={`/details/${show.id}`}
+                onClick={() => onFetchShowDetails(show.id)}
+                key={show.id}>
+                <div className="show" key={show.id}>
+                  <span className="rating">
+                    {displayRating(show.rating.average || 0)}
+                  </span>
+                  <img src={show.image ? show.image.medium || '' : ''}
+                    alt={show.name} className="thumbnail" />
+                  <div className="details">
+                    <div className="title">
+                      {show.name}
+                    </div>
+                    <span className="genre">
+                      {displayGenres(show.genres || [])}
+                    </span>
+                  </div>
                 </div>
-                <span className="genre">
-                  {displayGenres(show.genres || [])}
-                </span>
-              </div>
-            </div>
-          </Link>
-        )}
+              </Link>
+            )}
     </div>
   );
 }

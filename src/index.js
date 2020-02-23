@@ -62,7 +62,7 @@ class App extends React.Component {
   fetchShowList() {
     this.setState({ showsRequestLoading: true });
     // Enhancement: API should return only needed information
-    axios.get('http://api.tvmaze.com/shows')
+    axios.get('https://api.tvmaze.com/shows')
       .then(response => {
         const shows = response.data;
 
@@ -78,7 +78,7 @@ class App extends React.Component {
    */
   fetchShowDetails(id) {
     this.setState({ showDetailsRequestLoading: true });
-    axios.get(`http://api.tvmaze.com/shows/${id}`)
+    axios.get(`https://api.tvmaze.com/shows/${id}`)
       .then(response => {
         const showDetails = response.data;
         
@@ -110,7 +110,7 @@ class App extends React.Component {
     };
 
     this.setState({ showsRequestLoading: true });
-    axios.get(`http://api.tvmaze.com/search/shows?q=${value}`)
+    axios.get(`https://api.tvmaze.com/search/shows?q=${value}`)
      .then(response => {
         const showsRaw = response.data;
         const shows = [];

@@ -13,7 +13,7 @@ function AppShowList(props) {
     <div className="list-wrapper">
       {loading ? <LoadingEllipsis /> :
         !shows.length ?
-          <div class="no-data-available">No data available.</div>
+          <div className="no-data-available">No data available.</div>
           : shows.map((show) =>
               <Link to={`/details/${show.id}`}
                 onClick={() => onFetchShowDetails(show.id)}

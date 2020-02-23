@@ -29,17 +29,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // Get the list of shows
-    this.setState({ showsRequestLoading: true });
-    // Enhancement: API should return only needed information
-    axios.get('http://api.tvmaze.com/shows')
-      .then(response => {
-        const shows = response.data;
-
-        this.setState({ shows });
-      }).finally(() => {
-        this.setState({ showsRequestLoading: false });
-      });
+    this.fetchShowList();
   }
 
   render() {
@@ -65,6 +55,22 @@ class App extends React.Component {
   }
 
   /**
+   * Fecth show list.
+   */
+  fetchShowList() {
+    this.setState({ showsRequestLoading: true });
+    // Enhancement: API should return only needed information
+    axios.get('http://api.tvmaze.com/shows')
+      .then(response => {
+        const shows = response.data;
+
+        this.setState({ shows });
+      }).finally(() => {
+        this.setState({ showsRequestLoading: false });
+      });
+  }
+
+  /**
    * Fetch show details.
    * @param {string} id Show ID.
    */
@@ -87,8 +93,12 @@ class App extends React.Component {
    */
   searchItem(event) {
     const { value } = event.currentTarget;
-   
-    if (!value) return;
+
+    if (!value) {
+      this.fetchShowList();
+      
+      return;
+    };
 
     this.setState({ showsRequestLoading: true });
     axios.get(`http://api.tvmaze.com/search/shows?q=${value}`)

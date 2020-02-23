@@ -5,13 +5,16 @@ import ReactHtmlParser from 'react-html-parser';
 import '../css/AppShowDetails.css';
 import LoadingEllipsis from './LoadingEllipsis';
 
-function AppShowDetails({ details, loading }) {
+function AppShowDetails({ details, loading, onRouteToMain }) {
   const history = useHistory();
 
   return (
     loading ? <LoadingEllipsis />
       : <div className="details">
-          <span className="back-wrapper" onClick={() => history.goBack()}>
+          <span className="back-wrapper" onClick={() => {
+            history.goBack();
+            onRouteToMain();
+            }}>
             <i className="fas fa-chevron-left back" />
             Show List
           </span>

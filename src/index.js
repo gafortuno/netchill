@@ -26,6 +26,7 @@ class App extends React.Component {
 
     this.searchItem = this.searchItem.bind(this);
     this.fetchShowDetails = this.fetchShowDetails.bind(this);
+    this.routeToMain = this.routeToMain.bind(this);
   }
 
   componentDidMount() {
@@ -46,7 +47,8 @@ class App extends React.Component {
 
             <Route path='/details/:id'>
               <AppShowDetails details={this.state.showDetails}
-                loading={this.state.showDetailsRequestLoading} />
+                loading={this.state.showDetailsRequestLoading}
+                onRouteToMain={this.routeToMain} />
             </Route>
           </Switch>
         </main>
@@ -84,6 +86,13 @@ class App extends React.Component {
       }).finally(() => {
         this.setState({ showDetailsRequestLoading: false });
       });
+  }
+
+  /**
+   * Route back to main page.
+   */
+  routeToMain() {
+    this.fetchShowList();
   }
 
   /**

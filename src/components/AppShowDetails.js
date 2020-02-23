@@ -15,33 +15,35 @@ function AppShowDetails({ details, loading }) {
             <i className="fas fa-chevron-left back" />
             Show List
           </span>
-          <div className="details-wrapper">
-            <div className="left">
-              <a href={details.officialSite}>
-                <img src={details.image ? details.image.medium || '' : ''} alt={details.name} />
-              </a>
-            </div>
-            <div className="right">
-              <span className="title">
-                {details.name}
-                <span className="rating">
-                  {displayRating(details.rating ? details.rating.average || 0 : 0)}
-                </span>
-              </span>
-              <div className="genre">{displayGenres(details.genres || [])}</div>
-              <div className="extra-details">
-                <div>Language: <span>{details.language}</span></div>
-                <div>Status: <span>{details.status}</span></div>
-                <div>Date Premiered: <span>{details.premiered}</span></div>
-                <div>Type: <span>{details.type}</span></div>
-                <div>Run time: <span>{details.runtime}</span></div>
-                <div>Schedule:
-                  <span> {displaySchedule(details.schedule ? details.schedule.days || [] : [])}
-                  {details.schedule ? details.schedule.time || '-' : '-'}</span></div>
+          {details && Object.keys(details).length ?
+            <div className="details-wrapper">
+              <div className="left">
+                <a href={details.officialSite}>
+                  <img src={details.image ? details.image.medium || '' : ''} alt={details.name} />
+                </a>
               </div>
-              <div className="summary">{ReactHtmlParser(details.summary)}</div>
+              <div className="right">
+                <span className="title">
+                  {details.name}
+                  <span className="rating">
+                    {displayRating(details.rating ? details.rating.average || 0 : 0)}
+                  </span>
+                </span>
+                <div className="genre">{displayGenres(details.genres || [])}</div>
+                <div className="extra-details">
+                  <div>Language: <span>{details.language}</span></div>
+                  <div>Status: <span>{details.status}</span></div>
+                  <div>Date Premiered: <span>{details.premiered}</span></div>
+                  <div>Type: <span>{details.type}</span></div>
+                  <div>Run time: <span>{details.runtime}</span></div>
+                  <div>Schedule:
+                    <span> {displaySchedule(details.schedule ? details.schedule.days || [] : [])}
+                    {details.schedule ? details.schedule.time || '-' : '-'}</span></div>
+                </div>
+                <div className="summary">{ReactHtmlParser(details.summary)}</div>
+              </div>
             </div>
-          </div>
+          : <div>No data available.</div>}
         </div>
   );
 }

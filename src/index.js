@@ -4,7 +4,6 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
 } from 'react-router-dom';
 import './css/index.css';
 import * as serviceWorker from './serviceWorker';
@@ -25,6 +24,7 @@ class App extends React.Component {
     };
 
     this.searchItem = this.searchItem.bind(this);
+    this.fetchShowDetails = this.fetchShowDetails.bind(this);
   }
 
   componentDidMount() {
@@ -50,24 +50,18 @@ class App extends React.Component {
             onChange={this.searchItem} className="search-input" />
         </header>
         <main>
-          <div className="list-wrapper">
-            <Switch>
-              <Route exact path="/">
-                {this.state.shows.map((show) =>
-                  <Link to={`/details/${show.id}`}
-                    onClick={() => this.fetchShowDetails(show.id)}
-                    key={show.id}>
-                      <AppShowList show={show}
-                        loading={this.state.showsRequestLoading} />
-                  </Link>
-                )}
-              </Route>
-              <Route path='/details/:id'>
-                <AppShowDetails details={this.state.showDetails}
-                  loading={this.state.showDetailsRequestLoading} />
-              </Route>
-            </Switch>
-          </div>
+          <Switch>
+            <Route exact path="/">
+              <AppShowList shows={this.state.shows}
+                loading={this.state.showsRequestLoading}
+                onFetchShowDetails={() => this.fetchShowDetails('1')} />
+            </Route>
+
+            <Route path='/details/:id'>
+              <AppShowDetails details={this.state.showDetails}
+                loading={this.state.showDetailsRequestLoading} />
+            </Route>
+          </Switch>
         </main>
       </Router>
     );
@@ -75,7 +69,7 @@ class App extends React.Component {
 
   /**
    * Fetch show details.
-   * @param {string} id Show id.
+   * @param {string} id Show ID.
    */
   fetchShowDetails(id) {
     this.setState({ showDetailsRequestLoading: true });

@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/net-chill/static/css/main.93d94b73.chunk.css",
-    "main.js": "/net-chill/static/js/main.6d48171c.chunk.js",
-    "main.js.map": "/net-chill/static/js/main.6d48171c.chunk.js.map",
+    "main.js": "/net-chill/static/js/main.b496695a.chunk.js",
+    "main.js.map": "/net-chill/static/js/main.b496695a.chunk.js.map",
     "runtime-main.js": "/net-chill/static/js/runtime-main.2412b4b0.js",
     "runtime-main.js.map": "/net-chill/static/js/runtime-main.2412b4b0.js.map",
     "static/js/2.d53fab20.chunk.js": "/net-chill/static/js/2.d53fab20.chunk.js",
     "static/js/2.d53fab20.chunk.js.map": "/net-chill/static/js/2.d53fab20.chunk.js.map",
     "index.html": "/net-chill/index.html",
-    "precache-manifest.ed6a7d538bd506b18f2ff520d391f3e1.js": "/net-chill/precache-manifest.ed6a7d538bd506b18f2ff520d391f3e1.js",
+    "precache-manifest.c134371d9887c73a9380e7fc94ed17ac.js": "/net-chill/precache-manifest.c134371d9887c73a9380e7fc94ed17ac.js",
     "service-worker.js": "/net-chill/service-worker.js",
     "static/css/main.93d94b73.chunk.css.map": "/net-chill/static/css/main.93d94b73.chunk.css.map",
     "static/js/2.d53fab20.chunk.js.LICENSE.txt": "/net-chill/static/js/2.d53fab20.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.2412b4b0.js",
     "static/js/2.d53fab20.chunk.js",
     "static/css/main.93d94b73.chunk.css",
-    "static/js/main.6d48171c.chunk.js"
+    "static/js/main.b496695a.chunk.js"
   ]
 }

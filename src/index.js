@@ -1,9 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+} from 'react-router-dom';
 import './css/index.css';
 import * as serviceWorker from './serviceWorker';
-
 import axios from 'axios';
+
+import AppShowList from './components/AppShowList';
+import AppShowDetails from './components/AppShowDetails';
 
 class App extends React.Component {
   constructor(props) {
@@ -11,6 +19,9 @@ class App extends React.Component {
 
     this.state = {
       shows: [],
+      showsRequestLoading: false,
+      showDetails: {},
+      showDetailsRequestLoading: false,
     };
 
     this.searchItem = this.searchItem.bind(this);
@@ -18,92 +29,64 @@ class App extends React.Component {
 
   componentDidMount() {
     // Get the list of shows
+    this.setState({ showsRequestLoading: true });
+    // Enhancement: API should return only needed information
     axios.get('http://api.tvmaze.com/shows')
       .then(response => {
         const shows = response.data;
 
         this.setState({ shows });
-    });
+      }).finally(() => {
+        this.setState({ showsRequestLoading: false });
+      });
   }
 
   render() {
     return (
-      <div>
+      <Router>
         <header>
           <i className="fas fa-search"></i>
           <input type="text" id="searchInput"
             onChange={this.searchItem} className="search-input" />
         </header>
         <main>
-          <div className="wrapper">
-            {this.state.shows.map((show) =>
-              <div className="show" key={show.id}>
-                <span className="rating">
-                  {this.displayRating(show.rating)}
-                </span>
-                <img src={this.displayThumbnail(show.image)}
-                  alt={show.name} className="thumbnail" />
-                <div className="details">
-                  <div className="title">
-                    {show.name}
-                  </div>
-                  <span className="genre">
-                    {this.displayGenres(show.genres)}
-                  </span>
-                </div>
-              </div>
-            )}
+          <div className="list-wrapper">
+            <Switch>
+              <Route exact path="/">
+                {this.state.shows.map((show) =>
+                  <Link to={`/details/${show.id}`}
+                    onClick={() => this.fetchShowDetails(show.id)}
+                    key={show.id}>
+                      <AppShowList show={show}
+                        loading={this.state.showsRequestLoading} />
+                  </Link>
+                )}
+              </Route>
+              <Route path='/details/:id'>
+                <AppShowDetails details={this.state.showDetails}
+                  loading={this.state.showDetailsRequestLoading} />
+              </Route>
+            </Switch>
           </div>
         </main>
-      </div>
+      </Router>
     );
   }
 
   /**
-   * Convert rating to decimal for consistency.
-   * @param {Number} rating Movie/Show rating.
+   * Fetch show details.
+   * @param {string} id Show id.
    */
-   displayRating(rating) {
-    // Need an early return because the API response is inconsistent.
-    if (!rating) return '-';
-  
-    const { average } = rating;
-  
-    if (!average) return '-';
-  
-    return average.toFixed(1);
-  }
-
-  /**
-   * Concatenate genres.
-   * @param {Array} genres List of genres.
-   */
-  displayGenres(genres) {
-    // Need an early return because the API response is inconsistent.
-    if (!genres) return;
-  
-    const length = genres.length;
-  
-    if (!length) return '-';
-  
-    return genres.map((genre, i) => {
-      return length === i + 1 ? genre : genre + ', ';
-    });
-  }
-
-  /**
-   * Responsible in displaying the thumbnail.
-   * @param {Object} src Contains the img src.
-   */
-  displayThumbnail(image) {
-    // Need an early return because the API response is inconsistent.
-    if (!image) return;
-  
-    const { medium } = image;
-  
-    if (!medium) return;
-  
-    return medium;
+  fetchShowDetails(id) {
+    this.setState({ showDetailsRequestLoading: true });
+    axios.get(`http://api.tvmaze.com/shows/${id}`)
+      .then(response => {
+        const showDetails = response.data;
+        
+        this.setState({ showDetails });
+      }).finally(() => {
+        this.setState({ showDetailsRequestLoading: false });
+      });
   }
 
   /**
@@ -115,18 +98,21 @@ class App extends React.Component {
     const { value } = event.currentTarget;
    
     if (!value) return;
-  
+
+    this.setState({ showsRequestLoading: true });
     axios.get(`http://api.tvmaze.com/search/shows?q=${value}`)
      .then(response => {
-      const showsRaw = response.data;
-      const shows = [];
+        const showsRaw = response.data;
+        const shows = [];
 
-      showsRaw.forEach((showRaw) => {
-        shows.push(showRaw.show);
+        showsRaw.forEach((showRaw) => {
+          shows.push(showRaw.show);
+        });
+
+        this.setState({ shows });
+      }).finally(() => {
+        this.setState({ showsRequestLoading: false });
       });
-
-      this.setState({ shows });
-     });
    }
 }
 

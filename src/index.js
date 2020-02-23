@@ -9,6 +9,7 @@ import './css/index.css';
 import * as serviceWorker from './serviceWorker';
 import axios from 'axios';
 
+import AppHeader from './components/AppHeader';
 import AppShowList from './components/AppShowList';
 import AppShowDetails from './components/AppShowDetails';
 
@@ -44,11 +45,7 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <header>
-          <i className="fas fa-search"></i>
-          <input type="text" id="searchInput"
-            onChange={this.searchItem} className="search-input" />
-        </header>
+        <AppHeader onSearchItem={this.searchItem} />
         <main>
           <Switch>
             <Route exact path="/">

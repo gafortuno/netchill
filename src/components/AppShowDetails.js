@@ -10,7 +10,7 @@ function AppShowDetails({ details, loading }) {
   return (
     loading ? <LoadingEllipsis />
       : <div className="details-wrapper">
-          <span class="back-wrapper" onClick={() => history.goBack()}>
+          <span className="back-wrapper" onClick={() => history.goBack()}>
             <i className="fas fa-chevron-left back" />
             Show List
           </span>

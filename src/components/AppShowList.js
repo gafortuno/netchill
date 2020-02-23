@@ -15,7 +15,7 @@ function AppShowList(props) {
         !shows.length ?
           <div className="no-data-available">No data available.</div>
           : shows.map((show) =>
-              <Link to={`/details/${show.id}`}
+              <Link to={`/net-chill/details/${show.id}`}
                 onClick={() => onFetchShowDetails(show.id)}
                 key={show.id}>
                 <div className="show" key={show.id}>

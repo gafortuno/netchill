@@ -7,7 +7,7 @@ import '../css/AppHeader.css';
 function AppHeader({ onSearchItem, location }) {
   return (
     <header>
-      {location.pathname === '/' ?
+      {location.pathname === '/net-chill' ?
         <span className="search-wrapper">
           <i className="fas fa-search"></i>
           <input type="text" id="searchInput"

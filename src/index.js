@@ -39,13 +39,13 @@ class App extends React.Component {
         <AppHeader onSearchItem={this.searchItem} />
         <main>
           <Switch>
-            <Route exact path="/">
+            <Route exact path="/net-chill">
               <AppShowList shows={this.state.shows}
                 loading={this.state.showsRequestLoading}
                 onFetchShowDetails={this.fetchShowDetails} />
             </Route>
 
-            <Route path='/details/:id'>
+            <Route path='/net-chill/details/:id'>
               <AppShowDetails details={this.state.showDetails}
                 loading={this.state.showDetailsRequestLoading}
                 onRouteToMain={this.routeToMain} />

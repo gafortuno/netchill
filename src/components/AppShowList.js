@@ -17,7 +17,8 @@ function AppShowList(props) {
           : shows.map((show) =>
               <Link to={`/net-chill/details/${show.id}`}
                 onClick={() => onFetchShowDetails(show.id)}
-                key={show.id}>
+                key={show.id}
+                className="link-container">
                 <div className="show" key={show.id}>
                   <span className="rating">
                     {displayRating(show.rating.average || 0)}

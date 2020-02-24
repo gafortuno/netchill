@@ -4,10 +4,10 @@ import '../css/AppNavigation.css';
 function AppNavigation() {
   return (
     <nav className="navigation">
-      <i class="fas fa-home"></i>
-      <i class="far fa-user"></i>
-      <i class="fas fa-download"></i>
-      <i class="fas fa-bars"></i>
+      <i className="fas fa-home"></i>
+      <i className="far fa-user"></i>
+      <i className="fas fa-download"></i>
+      <i className="fas fa-bars"></i>
     </nav>
   );
 }

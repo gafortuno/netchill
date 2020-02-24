@@ -31,7 +31,11 @@
   min-width: 15px;
 }
 
-a {
+.link-container {
   text-decoration: none;
   color: inherit;
+}
+
+.link-container:hover {
+  background-color: #000000;
 }

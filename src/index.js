@@ -10,6 +10,7 @@ import * as serviceWorker from './serviceWorker';
 import axios from 'axios';
 
 import AppHeader from './components/AppHeader';
+import AppNavigation from './components/AppNavigation';
 import AppShowList from './components/AppShowList';
 import AppShowDetails from './components/AppShowDetails';
 
@@ -51,6 +52,7 @@ class App extends React.Component {
                 onRouteToMain={this.routeToMain} />
             </Route>
           </Switch>
+          <AppNavigation />
         </main>
       </Router>
     );

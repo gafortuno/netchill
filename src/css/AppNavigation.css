@@ -1,0 +1,27 @@
+.navigation {
+  position: fixed;
+  bottom: 0;
+  width: 96%;
+  left: 0;
+  display: flex;
+  background: #FF424F;
+  padding: 10px 2%;;
+  max-height: 20px;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.navigation i {
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navigation i:hover,
+.navigation i.active {
+  color: #FF424F;
+  background-color: #FFFFFF;
+}

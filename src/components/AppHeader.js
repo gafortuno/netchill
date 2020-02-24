@@ -11,7 +11,8 @@ function AppHeader({ onSearchItem, location }) {
         <span className="search-wrapper">
           <i className="fas fa-search"></i>
           <input type="text" id="searchInput"
-          onChange={onSearchItem} className="search-input" />
+          onChange={onSearchItem} className="search-input"
+          placeholder="Search..." />
         </span> : null}
     </header>
   );

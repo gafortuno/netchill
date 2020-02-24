@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "6e555f4dae4cd7b75f832f05fb6fa4f1",
+    "revision": "888b9151a3d832f356ab7c5debf4e04b",
     "url": "/net-chill/index.html"
   },
   {
-    "revision": "23cb17dc55265deadf5e",
-    "url": "/net-chill/static/css/main.fedd86bd.chunk.css"
+    "revision": "a5f9b64d911493eb6736",
+    "url": "/net-chill/static/css/main.a7b42e1d.chunk.css"
   },
   {
     "revision": "f301358343c97edd12ac",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/net-chill/static/js/2.bb75d492.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "23cb17dc55265deadf5e",
-    "url": "/net-chill/static/js/main.04c45a36.chunk.js"
+    "revision": "a5f9b64d911493eb6736",
+    "url": "/net-chill/static/js/main.e1a02b29.chunk.js"
   },
   {
     "revision": "ca692340ea7740a3322d",
